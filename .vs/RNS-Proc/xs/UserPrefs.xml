@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{9D2935B1-1A07-48D4-BDBC-8B2EF98E31DD}|Default">
+  <MonoDevelop.Ide.ItemProperties.RNS-Proc PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RNS-Proc/Program.cs">
+    <Files>
+      <File FileName="RNS-Proc/Program.cs" Line="23" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -21,6 +21,8 @@ namespace RNS_Proc
       RNS rnsY = ConvertToRNS(y);
 
       RNS zpi = Mult(rnsX, rnsY);
+
+            MRS mrs = RnsToMrs(zpi);
     }
 
     private static RNS ConvertToRNS(double number)
@@ -64,15 +66,44 @@ namespace RNS_Proc
       return zpi;
     }
 
-    private static MRS RnsToMrs()
+    private static MRS RnsToMrs(RNS rns)
     {
+            MRS mrs = new MRS();
+            var zdigit = new int[RNS.Modulus.Length];
 
+            int z1 = rns.Values[0];
+            zdigit[0] = z1;
+
+            for (int i = 2; i < rns.Values.Length; i++)
+            {
+                zdigit[i] = modInverse(RNS.Modulus[0], 1) % RNS.Modulus[1] * (rns.Values[1] - zdigit[0]);
+            }
+
+            return mrs;
     }
+
+        private static int modInverse(int a, int n)
+        {
+            int i = n, v = 0, d = 1;
+            while (a > 0)
+            {
+                int t = i / a, x = a;
+                a = i % x;
+                i = x;
+                x = d;
+                d = v - t * x;
+                v = x;
+            }
+            v %= n;
+            if (v < 0) v = (v + n) % n;
+            return v;
+        }
   }
 
   class MRS
   {
-
+        public int[] Modulus { get; set; }
+        public int[] Values { get; set; }
   }
 
   class RNS
