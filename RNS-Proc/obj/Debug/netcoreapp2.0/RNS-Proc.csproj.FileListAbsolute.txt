@@ -9,3 +9,12 @@
 /Users/pro/Projects/RNS-Proc/RNS-Proc/bin/Debug/netcoreapp2.0/RNS-Proc.pdb
 /Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.dll
 /Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.pdb
+D:\KRD\AK_RNS\RNS-Proc\bin\Debug\netcoreapp2.0\RNS-Proc.deps.json
+D:\KRD\AK_RNS\RNS-Proc\bin\Debug\netcoreapp2.0\RNS-Proc.runtimeconfig.json
+D:\KRD\AK_RNS\RNS-Proc\bin\Debug\netcoreapp2.0\RNS-Proc.runtimeconfig.dev.json
+D:\KRD\AK_RNS\RNS-Proc\bin\Debug\netcoreapp2.0\RNS-Proc.dll
+D:\KRD\AK_RNS\RNS-Proc\bin\Debug\netcoreapp2.0\RNS-Proc.pdb
+D:\KRD\AK_RNS\RNS-Proc\obj\Debug\netcoreapp2.0\RNS-Proc.csprojResolveAssemblyReference.cache
+D:\KRD\AK_RNS\RNS-Proc\obj\Debug\netcoreapp2.0\RNS-Proc.AssemblyInfo.cs
+D:\KRD\AK_RNS\RNS-Proc\obj\Debug\netcoreapp2.0\RNS-Proc.dll
+D:\KRD\AK_RNS\RNS-Proc\obj\Debug\netcoreapp2.0\RNS-Proc.pdb

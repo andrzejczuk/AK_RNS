@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 2,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "Microsoft.NETCore.App/2.0.0": {
@@ -194,7 +194,7 @@
           "lib/netstandard1.0/_._": {}
         },
         "build": {
-          "build/netstandard2.0/NETStandard.Library.targets": {}
+          "build/NETStandard.Library.targets": {}
         }
       }
     }
@@ -664,56 +664,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/pro/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\a.andrzejczuk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/pro/Projects/RNS-Proc/RNS-Proc/RNS-Proc.csproj",
+      "projectUniqueName": "D:\\KRD\\AK_RNS\\RNS-Proc\\RNS-Proc.csproj",
       "projectName": "RNS-Proc",
-      "projectPath": "/Users/pro/Projects/RNS-Proc/RNS-Proc/RNS-Proc.csproj",
-      "packagesPath": "/Users/pro/.nuget/packages/",
-      "outputPath": "/Users/pro/Projects/RNS-Proc/RNS-Proc/obj",
+      "projectPath": "D:\\KRD\\AK_RNS\\RNS-Proc\\RNS-Proc.csproj",
+      "outputPath": "D:\\KRD\\AK_RNS\\RNS-Proc\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
-      "configFilePaths": [
-        "/Users/pro/.config/NuGet/NuGet.Config"
-      ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
-      "sources": {
-        "https://api.nuget.org/v3/index.json": {}
-      },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {}
         }
-      },
-      "warningProperties": {
-        "warnAsError": [
-          "NU1605"
-        ]
       }
     },
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "2.0",
             "autoReferenced": true
           }
-        },
-        "imports": [
-          "net461"
-        ],
-        "assetTargetFallback": true,
-        "warn": true
+        }
       }
     }
   }
