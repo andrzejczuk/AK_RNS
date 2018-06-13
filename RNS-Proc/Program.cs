@@ -68,21 +68,30 @@ namespace RNS_Proc
 
     private static MRS RnsToMrs(RNS rns)
     {
-            MRS mrs = new MRS();
+            // TODO
+			MRS mrs = new MRS();
             var zdigit = new int[RNS.Modulus.Length];
 
-            int z1 = rns.Values[0];
-            zdigit[0] = z1;
+            zdigit[0] = rns.Values[0];
+            int temp = 0;
 
-            for (int i = 2; i < rns.Values.Length; i++)
+            for (int i = 1; i < RNS.ModulusCount; i++)
             {
-                zdigit[i] = modInverse(RNS.Modulus[0], 1) % RNS.Modulus[1] * (rns.Values[1] - zdigit[0]);
+                temp = ModInverse(RNS.Modulus[0], RNS.Modulus[i]) * (rns.Values[i] - zdigit[0]);
+
+                for (int j = 1; j <= i; j++)
+                {
+                    temp = ModInverse(RNS.Modulus[j], RNS.Modulus[i]) * (temp - zdigit[j]);
+                }
+
+                zdigit[i] = temp % RNS.Modulus[i];
             }
+            mrs.Values = zdigit;
+            mrs.Modulus = RNS.Modulus;
 
             return mrs;
     }
-
-        private static int modInverse(int a, int n)
+        private static int ModInverse(int a, int n)
         {
             int i = n, v = 0, d = 1;
             while (a > 0)
