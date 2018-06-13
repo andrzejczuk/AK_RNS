@@ -17,61 +17,110 @@ namespace RNS_Proc
       Console.WriteLine("Wprowadź liczbę Y:");
       double y = double.Parse(Console.ReadLine());
 
-      RNS rnsX = ConvertToRNS(x);
-      RNS rnsY = ConvertToRNS(y);
+      RNS rnsX = MathRNS.ConvertToRNS(x);
+            Print(rnsX);
+      RNS rnsY = MathRNS.ConvertToRNS(y);
+            Print(rnsY);
 
-      RNS zpi = Mult(rnsX, rnsY);
+      RNS zpi = MathRNS.Mult(rnsX, rnsY);
+            Console.WriteLine("Wynik pośredni:");
+            Print(zpi);
 
-      MRS mrs = RnsToMrs(zpi);
+      MRS mrs = MathRNS.RnsToMrs(zpi);
 
-      RNS result = MrsToRns(mrs);
+      RNS result = MathRNS.MrsToRns(mrs);
+            Console.WriteLine("Wynik właściwy:");
+            Print(result);
     }
+        static void Print(RNS x){
+            Console.WriteLine();
+            Console.WriteLine("Moduły: ");
+            for (int i = 0; i < x.Values.Length; i++)
+            {
+                Console.Write(RNS.Modulus[i] + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Reszty: ");
+            for (int i = 0; i < x.Values.Length; i++)
+            {
+                Console.Write(x.Values[i] + " ");
+            }
+            Console.WriteLine();
+        }
+  }
 
-    private static RNS ConvertToRNS(double number)
+  public class MRS
+  {
+        public int[] Modulus { get; set; }
+        public int[] Values { get; set; }
+  }
+
+  public class RNS
+  {
+    public static int[] Modulus => new[] { 4, 3, 5, 7, 11, 13, 17, 19 };
+    public static int fractionalModulusCount => 4;
+    public static int ModulusCount => 8;
+    public int MachineValue { get; set; }
+    public int[] Values { get; set; }
+
+    public static int CalculateFractionalRange()
     {
-      RNS rns = new RNS();
-      int Rf = RNS.CalculateFractionalRange();
-      int machineValue = CalculateMachineValue(number, Rf);
+      int Rf = Modulus[0];
 
-      var values = new int[RNS.ModulusCount];
-
-      for (int i = 0; i < RNS.ModulusCount; i++)
+      for (int i = 1; i < fractionalModulusCount; i++)
       {
-        values[i] = machineValue % RNS.Modulus[i];
+        Rf *= Modulus[i];
       }
 
-      rns.Values = values;
-      rns.MachineValue = machineValue;
-
-      return rns;
+      return Rf;
     }
-
-    private static int CalculateMachineValue(double number, int rf)
+  }
+    public class MathRNS
     {
-      return (int)(number * (double)rf);
-    }
+        public static RNS ConvertToRNS(double number)
+        {
+            RNS rns = new RNS();
+            int Rf = RNS.CalculateFractionalRange();
+            int machineValue = CalculateMachineValue(number, Rf);
 
-    private static RNS Mult(RNS rnsX, RNS rnsY)
-    {
-      RNS zpi = new RNS();
+            var values = new int[RNS.ModulusCount];
 
-      int machineValueZpi = rnsX.MachineValue * rnsY.MachineValue;
-      zpi.MachineValue = machineValueZpi;
+            for (int i = 0; i < RNS.ModulusCount; i++)
+            {
+                values[i] = machineValue % RNS.Modulus[i];
+            }
 
-      zpi.Values = new int[RNS.Modulus.Length];
+            rns.Values = values;
+            rns.MachineValue = machineValue;
 
-      for (int i = 0; i < RNS.Modulus.Length; i++)
-      {
-        zpi.Values[i] = rnsX.Values[i] * rnsY.Values[i] % RNS.Modulus[i];
-      }
+            return rns;
+        }
 
-      return zpi;
-    }
+        public static int CalculateMachineValue(double number, int rf)
+        {
+            return (int)(number * (double)rf);
+        }
 
-    private static MRS RnsToMrs(RNS rns)
-    {
-            // TODO
-			MRS mrs = new MRS();
+        public static RNS Mult(RNS rnsX, RNS rnsY)
+        {
+            RNS zpi = new RNS();
+
+            int machineValueZpi = rnsX.MachineValue * rnsY.MachineValue;
+            zpi.MachineValue = machineValueZpi;
+
+            zpi.Values = new int[RNS.Modulus.Length];
+
+            for (int i = 0; i < RNS.Modulus.Length; i++)
+            {
+                zpi.Values[i] = rnsX.Values[i] * rnsY.Values[i] % RNS.Modulus[i];
+            }
+
+            return zpi;
+        }
+
+        public static MRS RnsToMrs(RNS rns)
+        {
+            MRS mrs = new MRS();
             var zdigit = new int[RNS.Modulus.Length];
 
             zdigit[0] = rns.Values[0];
@@ -92,16 +141,16 @@ namespace RNS_Proc
             mrs.Modulus = RNS.Modulus;
 
             return mrs;
-    }
+        }
 
-        private static RNS MrsToRns(MRS mrs)
+        public static RNS MrsToRns(MRS mrs)
         {
             RNS rns = new RNS();
             int k = RNS.fractionalModulusCount + 1;
 
             int value = mrs.Values[k - 1];
 
-            for (int i = k ; i < RNS.Modulus.Length; i++)
+            for (int i = k; i < RNS.Modulus.Length; i++)
             {
                 int tempValue = mrs.Values[i];
 
@@ -117,14 +166,14 @@ namespace RNS_Proc
 
             for (int i = 0; i < RNS.Modulus.Length; i++)
             {
-                rnsValue[i] = value % RNS.Modulus[i];    
+                rnsValue[i] = value % RNS.Modulus[i];
             }
 
             rns.Values = rnsValue;
             return rns;
         }
 
-        private static int ModInverse(int a, int n)
+        public static int ModInverse(int a, int n)
         {
             int i = n, v = 0, d = 1;
             while (a > 0)
@@ -139,35 +188,6 @@ namespace RNS_Proc
             v %= n;
             if (v < 0) v = (v + n) % n;
             return v;
-        }
-  }
-
-  class MRS
-  {
-        public int[] Modulus { get; set; }
-        public int[] Values { get; set; }
-  }
-
-  class RNS
-  {
-    public static int[] Modulus => new[] { 4, 3, 5, 7, 11, 13, 17, 19 };
-    public static int fractionalModulusCount => 4;
-    public static int ModulusCount => 8;
-    public int MachineValue { get; set; }
-    public int[] Values { get; set; }
-
-    public static int CalculateFractionalRange()
-    {
-      int Rf = Modulus[0];
-
-      for (int i = 1; i < fractionalModulusCount; i++)
-      {
-        Rf *= Modulus[i];
-      }
-
-      return Rf;
+        }   
     }
-
-
-  }
 }
