@@ -22,7 +22,9 @@ namespace RNS_Proc
 
       RNS zpi = Mult(rnsX, rnsY);
 
-            MRS mrs = RnsToMrs(zpi);
+      MRS mrs = RnsToMrs(zpi);
+
+      RNS result = MrsToRns(mrs);
     }
 
     private static RNS ConvertToRNS(double number)
@@ -91,6 +93,37 @@ namespace RNS_Proc
 
             return mrs;
     }
+
+        private static RNS MrsToRns(MRS mrs)
+        {
+            RNS rns = new RNS();
+            int k = RNS.fractionalModulusCount + 1;
+
+            int value = mrs.Values[k - 1];
+
+            for (int i = k ; i < RNS.Modulus.Length; i++)
+            {
+                int tempValue = mrs.Values[i];
+
+                for (int j = k; j <= i; j++)
+                {
+                    tempValue *= RNS.Modulus[j - 1];
+                }
+
+                value += tempValue;
+            }
+
+            var rnsValue = new int[RNS.Modulus.Length];
+
+            for (int i = 0; i < RNS.Modulus.Length; i++)
+            {
+                rnsValue[i] = value % RNS.Modulus[i];    
+            }
+
+            rns.Values = rnsValue;
+            return rns;
+        }
+
         private static int ModInverse(int a, int n)
         {
             int i = n, v = 0, d = 1;
