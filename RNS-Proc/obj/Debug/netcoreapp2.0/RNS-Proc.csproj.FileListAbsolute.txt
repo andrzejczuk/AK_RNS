@@ -1,0 +1,11 @@
+/Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.csprojAssemblyReference.cache
+/Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.csproj.CoreCompileInputs.cache
+/Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.AssemblyInfoInputs.cache
+/Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.AssemblyInfo.cs
+/Users/pro/Projects/RNS-Proc/RNS-Proc/bin/Debug/netcoreapp2.0/RNS-Proc.deps.json
+/Users/pro/Projects/RNS-Proc/RNS-Proc/bin/Debug/netcoreapp2.0/RNS-Proc.runtimeconfig.json
+/Users/pro/Projects/RNS-Proc/RNS-Proc/bin/Debug/netcoreapp2.0/RNS-Proc.runtimeconfig.dev.json
+/Users/pro/Projects/RNS-Proc/RNS-Proc/bin/Debug/netcoreapp2.0/RNS-Proc.dll
+/Users/pro/Projects/RNS-Proc/RNS-Proc/bin/Debug/netcoreapp2.0/RNS-Proc.pdb
+/Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.dll
+/Users/pro/Projects/RNS-Proc/RNS-Proc/obj/Debug/netcoreapp2.0/RNS-Proc.pdb
